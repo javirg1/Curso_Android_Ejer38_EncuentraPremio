@@ -26,6 +26,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return resId;
     }
 
+    // --------------------------------------------------------------------------------------------
+    // deshabilitarCasillas()
+    // --------------------------------------------------------------------------------------------
+
     private void deshabilitarCasillas(){
         img0.setEnabled(false);
         img1.setEnabled(false);
@@ -38,7 +42,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         img8.setEnabled(false);
     }
 
+    // --------------------------------------------------------------------------------------------
+    // nuevaPartida()
+    // --------------------------------------------------------------------------------------------
+
     private void nuevaPartida(){
+
         juego=new JGamePrize();
 
         tvResultado.setText("");
@@ -62,7 +71,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         img7.setEnabled(true);
         img8.setEnabled(true);
 
-
     }
 
     /***********************************************************************************************
@@ -84,9 +92,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView img7;
     private ImageView img8;
 
-
-    private Button btnNuevaPartida;
-
     /***********************************************************************************************
      onCreate
      **********************************************************************************************/
@@ -98,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // Instanciamos el objeto de la clase JGamePrize
         juego=new JGamePrize();
+
 
         // Enlazamos con la activity
         img0 = findViewById(R.id.img0);
@@ -112,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         tvResultado = findViewById(R.id.tvResultado);
 
-        btnNuevaPartida = findViewById(R.id.btnNuevaPartida);
+        Button btnNuevaPartida = findViewById(R.id.btnNuevaPartida);
 
         // Registramos el evento click, de forma global:
         img0.setOnClickListener(MainActivity.this);
