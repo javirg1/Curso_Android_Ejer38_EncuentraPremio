@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // --------------------------------------------------------------------------------------------
     // descubreCasilla() - Recoge el nombre del recurso drawable y lo convierte en el Id del recurso
     // --------------------------------------------------------------------------------------------
+
     private int descubreCasilla(String tag) {
         juego.imagenAleatoria(tag);
         String nombreImagen = juego.getImagenAleatoria();
@@ -67,7 +68,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void nuevaPartida() {
 
+        // Instanciamos el objeto de la clase JGamePrize
+
         juego = new JGamePrize();
+
+        // Inicializamos casillas y Texviews
 
         tvResultado.setText("");
 
@@ -102,10 +107,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Instanciamos el objeto de la clase JGamePrize
-
-        juego = new JGamePrize();
-
         // Enlazamos con la activity
 
         img0 = findViewById(R.id.img0);
@@ -134,6 +135,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         img7.setOnClickListener(MainActivity.this);
         img8.setOnClickListener(MainActivity.this);
 
+        nuevaPartida();
+
         btnNuevaPartida.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -154,8 +157,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         imgClickada.setImageResource(resId);
         int num = juego.getNumeroImagen();
         //Log.e(TAG, "MainActivity - onClick - getNumeroImagen: " + num);
-        if (juego.getNumeroImagen() == 7 || juego.getNumeroImagen() == 8) {
-            String mensaje = String.format(getString(R.string.msg_resultado), juego.resultado());
+        if (juego.esFinPartida()){
+            String mensaje = String.format(getString(R.string.msg_resultado), juego.getMensaje());
             tvResultado.setText(mensaje);
             deshabilitarCasillas();
         }

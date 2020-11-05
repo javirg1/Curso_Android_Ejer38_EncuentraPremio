@@ -12,7 +12,7 @@ public class JGamePrize {
     private int numImagen;
     private int num;
     private int[] numeros;
-
+    private String msg;
 
     /***********************************************************************************************
      Propiedades de la clase
@@ -26,6 +26,9 @@ public class JGamePrize {
         return num;
     }
 
+    public String getMensaje() {
+        return msg;
+    }
 
     /***********************************************************************************************
      Constructor de la clase
@@ -33,6 +36,7 @@ public class JGamePrize {
 
     // Creamos un array ordenado con números que se corresponden con el nº de cada archivo imagen
     // Después desordenamos el array (ver la función)
+
     public JGamePrize() {
         numeros = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8};
         numeros = RandomizeArray(numeros);
@@ -45,6 +49,7 @@ public class JGamePrize {
     // --------------------------------------------------------------------------------------------
     // imagenAleatoria() - Generamos un nº aleatorio y lo "convertimos" en una imagen
     // --------------------------------------------------------------------------------------------
+
     public String imagenAleatoria(String tag) {
         int posicion_casilla_clicada = Integer.parseInt(tag);
         int numImagen = numeros[posicion_casilla_clicada];
@@ -55,17 +60,20 @@ public class JGamePrize {
     }
 
     // --------------------------------------------------------------------------------------------
-    // resultado() - Generamos un mensaje cuando sale el 7 o la calavera
+    // finPartida() - Generamos un mensaje cuando sale el 7 o la calavera
     // --------------------------------------------------------------------------------------------
-    public String resultado() {
-        String msg = "";
+
+    public Boolean esFinPartida(){
+        Boolean fin=false;
         if (num == 7) {
             msg = "Has ganado!!";
+            fin=true;
         }
         if (num == 8) {
             msg = "Has perdido!!";
+            fin=true;
         }
-        return msg;
+        return fin;
     }
 
     // --------------------------------------------------------------------------------------------
@@ -83,6 +91,4 @@ public class JGamePrize {
         }
         return array;
     }
-
-
 }
