@@ -33,10 +33,9 @@ public class JGamePrize {
 
     // Creamos un array ordenado con números que se corresponden con el nº de cada archivo imagen
     // Después desordenamos el array (ver la función)
-
     public JGamePrize() {
-        numeros= new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8};
-        numeros=RandomizeArray(numeros);
+        numeros = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8};
+        numeros = RandomizeArray(numeros);
     }
 
     /***********************************************************************************************
@@ -49,8 +48,8 @@ public class JGamePrize {
     public String imagenAleatoria(String tag) {
         int posicion_casilla_clicada = Integer.parseInt(tag);
         int numImagen = numeros[posicion_casilla_clicada];
-        num=numImagen;
-        Log.e(TAG, "class - numImagen: "+ num);
+        num = numImagen;
+        //Log.e(TAG, "class - numImagen: " + num);
         imagenFile = "dibujo_" + num;
         return imagenFile;
     }

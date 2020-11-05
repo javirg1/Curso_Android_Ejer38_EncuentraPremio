@@ -12,14 +12,33 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     /***********************************************************************************************
+     Objetos de la clase
+     **********************************************************************************************/
+
+    private String TAG = "Ejer_38";
+
+    private JGamePrize juego;
+
+    private TextView tvResultado;
+
+    private ImageView img0;
+    private ImageView img1;
+    private ImageView img2;
+    private ImageView img3;
+    private ImageView img4;
+    private ImageView img5;
+    private ImageView img6;
+    private ImageView img7;
+    private ImageView img8;
+
+    /***********************************************************************************************
      Funciones de la clase
      **********************************************************************************************/
 
     // --------------------------------------------------------------------------------------------
     // descubreCasilla() - Recoge el nombre del recurso drawable y lo convierte en el Id del recurso
     // --------------------------------------------------------------------------------------------
-
-    private int descubreCasilla(String tag){
+    private int descubreCasilla(String tag) {
         juego.imagenAleatoria(tag);
         String nombreImagen = juego.getImagenAleatoria();
         int resId = getResources().getIdentifier(nombreImagen, "drawable", getPackageName());
@@ -30,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // deshabilitarCasillas()
     // --------------------------------------------------------------------------------------------
 
-    private void deshabilitarCasillas(){
+    private void deshabilitarCasillas() {
         img0.setEnabled(false);
         img1.setEnabled(false);
         img2.setEnabled(false);
@@ -46,11 +65,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // nuevaPartida()
     // --------------------------------------------------------------------------------------------
 
-    private void nuevaPartida(){
+    private void nuevaPartida() {
 
-        juego=new JGamePrize();
+        juego = new JGamePrize();
 
         tvResultado.setText("");
+
         img0.setImageResource(R.drawable.interrogacion);
         img1.setImageResource(R.drawable.interrogacion);
         img2.setImageResource(R.drawable.interrogacion);
@@ -74,25 +94,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /***********************************************************************************************
-     Objetos de la clase
-     **********************************************************************************************/
-
-    private String TAG = "Ejer_38";
-
-    private JGamePrize juego;
-    private TextView tvResultado;
-
-    private ImageView img0;
-    private ImageView img1;
-    private ImageView img2;
-    private ImageView img3;
-    private ImageView img4;
-    private ImageView img5;
-    private ImageView img6;
-    private ImageView img7;
-    private ImageView img8;
-
-    /***********************************************************************************************
      onCreate
      **********************************************************************************************/
 
@@ -102,10 +103,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         // Instanciamos el objeto de la clase JGamePrize
-        juego=new JGamePrize();
 
+        juego = new JGamePrize();
 
         // Enlazamos con la activity
+
         img0 = findViewById(R.id.img0);
         img1 = findViewById(R.id.img1);
         img2 = findViewById(R.id.img2);
@@ -120,7 +122,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Button btnNuevaPartida = findViewById(R.id.btnNuevaPartida);
 
-        // Registramos el evento click, de forma global:
+        // Registramos el evento click, de forma global
+
         img0.setOnClickListener(MainActivity.this);
         img1.setOnClickListener(MainActivity.this);
         img2.setOnClickListener(MainActivity.this);
@@ -147,18 +150,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         ImageView imgClickada = (ImageView) view;
-        int resId=descubreCasilla(imgClickada.getTag().toString());
+        int resId = descubreCasilla(imgClickada.getTag().toString());
         imgClickada.setImageResource(resId);
-        int num=juego.getNumeroImagen();
-        Log.e(TAG, "MainActivity - onClick - getNumeroImagen: "+ num);
-        if (juego.getNumeroImagen()==7 || juego.getNumeroImagen()==8){
-            String mensaje = String.format(getString(R.string.msg_resultado),juego.resultado());
+        int num = juego.getNumeroImagen();
+        //Log.e(TAG, "MainActivity - onClick - getNumeroImagen: " + num);
+        if (juego.getNumeroImagen() == 7 || juego.getNumeroImagen() == 8) {
+            String mensaje = String.format(getString(R.string.msg_resultado), juego.resultado());
             tvResultado.setText(mensaje);
             deshabilitarCasillas();
         }
-
     }
-
-
-
 }
