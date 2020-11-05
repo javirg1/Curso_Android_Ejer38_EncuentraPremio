@@ -7,9 +7,13 @@ import android.util.Log;
 import java.util.Random;
 
 public class JGamePrize {
+
+    /***********************************************************************************************
+     Atributos de la clase
+     **********************************************************************************************/
+
     String TAG = "Ejer_38";
     private String imagenFile;
-    private int numImagen;
     private int num;
     private int[] numeros;
     private String msg;
@@ -20,10 +24,6 @@ public class JGamePrize {
 
     public String getImagenAleatoria() {
         return imagenFile;
-    }
-
-    public int getNumeroImagen() {
-        return num;
     }
 
     public String getMensaje() {
@@ -52,19 +52,18 @@ public class JGamePrize {
 
     public String imagenAleatoria(String tag) {
         int posicion_casilla_clicada = Integer.parseInt(tag);
-        int numImagen = numeros[posicion_casilla_clicada];
-        num = numImagen;
+        num = numeros[posicion_casilla_clicada];
         //Log.e(TAG, "class - numImagen: " + num);
         imagenFile = "dibujo_" + num;
         return imagenFile;
     }
 
     // --------------------------------------------------------------------------------------------
-    // finPartida() - Generamos un mensaje cuando sale el 7 o la calavera
+    // isFinPartida() - Generamos un mensaje cuando sale el 7 o la calavera
     // --------------------------------------------------------------------------------------------
 
-    public Boolean esFinPartida(){
-        Boolean fin=false;
+    public Boolean isFinPartida(){
+        boolean fin=false;
         if (num == 7) {
             msg = "Has ganado!!";
             fin=true;
@@ -81,7 +80,7 @@ public class JGamePrize {
     // imágenes no salgan siempre en la misma casilla
     // --------------------------------------------------------------------------------------------
 
-    public int[] RandomizeArray(int[] array) {
+    private int[] RandomizeArray(int[] array) {
         Random rgen = new Random(); // Random number generator
         for (int i = 0; i < array.length; i++) {
             int randomPosition = rgen.nextInt(array.length);

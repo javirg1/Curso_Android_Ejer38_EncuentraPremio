@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Find the prize</string>
+    <string name="app_name">Encuentra premio</string>
     <string name="msg_resultado">%s</string>
     <string name="btn_nueva_partida">Nueva partida</string>
 

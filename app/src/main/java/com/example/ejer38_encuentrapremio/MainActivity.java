@@ -153,11 +153,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         ImageView imgClickada = (ImageView) view;
+        // Con getTag() leemos la etiqueta android:tag de cada ImageView que hemos añadido en el diseño de la activity y se lo pasamos como parámetro a la función descubreCasilla
         int resId = descubreCasilla(imgClickada.getTag().toString());
         imgClickada.setImageResource(resId);
-        int num = juego.getNumeroImagen();
         //Log.e(TAG, "MainActivity - onClick - getNumeroImagen: " + num);
-        if (juego.esFinPartida()){
+        if (juego.isFinPartida()){
             String mensaje = String.format(getString(R.string.msg_resultado), juego.getMensaje());
             tvResultado.setText(mensaje);
             deshabilitarCasillas();
